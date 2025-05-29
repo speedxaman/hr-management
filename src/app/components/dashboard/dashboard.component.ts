@@ -70,7 +70,7 @@ export class DashboardComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit() {
-    // this.initChart();
+    this.initChart();
   }
 
   private initChart() {
