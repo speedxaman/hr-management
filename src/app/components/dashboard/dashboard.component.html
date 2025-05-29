@@ -1,0 +1,121 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>HR Dashboard</h1>
+    <p>Welcome back! Here's what's happening at your company today.</p>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-cards">
+    <div class="card summary-card">
+      <div class="card-content">
+        <div class="card-icon employees">👥</div>
+        <div class="card-details">
+          <h3>Total Employees</h3>
+          <div class="card-number">248</div>
+          <div class="card-change positive">+12% from last month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card summary-card">
+      <div class="card-content">
+        <div class="card-icon leaves">🏖️</div>
+        <div class="card-details">
+          <h3>Active Leaves</h3>
+          <div class="card-number">23</div>
+          <div class="card-change neutral">5 pending approval</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card summary-card">
+      <div class="card-content">
+        <div class="card-icon departments">🏛️</div>
+        <div class="card-details">
+          <h3>Departments</h3>
+          <div class="card-number">8</div>
+          <div class="card-change positive">2 new this quarter</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card summary-card">
+      <div class="card-content">
+        <div class="card-icon attendance">📅</div>
+        <div class="card-details">
+          <h3>Attendance Rate</h3>
+          <div class="card-number">94.5%</div>
+          <div class="card-change positive">+2.1% this week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Content Grid -->
+  <div class="dashboard-grid">
+    <!-- Recent Activity Feed -->
+    <div class="card activity-feed">
+      <div class="card-header">
+        <h3>Recent Activity</h3>
+      </div>
+      <div class="card-body">
+        <div class="activity-item" *ngFor="let activity of recentActivities">
+          <div class="activity-avatar">{{ activity.user.charAt(0) }}</div>
+          <div class="activity-content">
+            <div class="activity-text">{{ activity.action }}</div>
+            <div class="activity-time">{{ activity.time }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Performance Chart -->
+    <div class="card chart-container">
+      <div class="card-header">
+        <h3>Department Performance</h3>
+      </div>
+      <div class="card-body">
+        <canvas #performanceChart width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Employee Table -->
+    <div class="card employee-table">
+      <div class="card-header">
+        <h3>Recent Employees</h3>
+        <button class="btn btn-primary">View All</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of employees">
+                <td>
+                  <div class="employee-info">
+                    <div class="employee-avatar">{{ employee.name.charAt(0) }}</div>
+                    <span>{{ employee.name }}</span>
+                  </div>
+                </td>
+                <td>{{ employee.role }}</td>
+                <td>{{ employee.department }}</td>
+                <td>
+                  <span class="badge" [ngClass]="'badge-' + employee.status.toLowerCase()">
+                    {{ employee.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
