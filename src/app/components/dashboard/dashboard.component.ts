@@ -83,17 +83,17 @@ export class DashboardComponent implements AfterViewInit {
       const labels = ['Engineering', 'Marketing', 'Sales', 'HR', 'Finance', 'Design', 'Operations', 'Support'];
       const maxValue = Math.max(...data);
       
-      canvas.width = 400;
-      canvas.height = 250;
+      canvas.width = 450;
+      canvas.height = 300;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      const barWidth = canvas.width / data.length - 10;
+      const barWidth = (canvas.width - 20)/ data.length - 10;
       const barMaxHeight = canvas.height - 40;
       
       data.forEach((value, index) => {
         const barHeight = (value / maxValue) * barMaxHeight;
-        const x = index * (barWidth + 10) + 5;
+        const x = index * (barWidth + 20) + 5;
         const y = canvas.height - barHeight - 20;
         
         // Draw bar
@@ -109,8 +109,8 @@ export class DashboardComponent implements AfterViewInit {
         // Draw label at bottom
         ctx.save();
         ctx.translate(x + barWidth / 2, canvas.height - 5);
-        ctx.rotate(-Math.PI / 4);
-        ctx.textAlign = 'right';
+        ctx.rotate(0);
+        ctx.textAlign = 'center';
         ctx.font = '10px Inter';
         ctx.fillText(labels[index], 0, 0);
         ctx.restore();
