@@ -84,7 +84,7 @@ export class DashboardComponent implements AfterViewInit {
       const maxValue = Math.max(...data);
       
       canvas.width = 400;
-      canvas.height = 200;
+      canvas.height = 250;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
